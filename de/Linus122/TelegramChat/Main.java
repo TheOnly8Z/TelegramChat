@@ -41,6 +41,13 @@ public class Main extends JavaPlugin implements Listener{
 		this.saveDefaultConfig();
 		cfg = this.getConfig();
 		this.pl = this;
+		
+		// Proxy settings hopefully no crashies
+		// Stolen from https://stackoverflow.com/questions/5697371/how-to-use-socks-in-java
+		System.getProperties().put( "proxySet", String.valueOf(cfg.getBoolean("proxy-enabled")) );
+		System.getProperties().put( "socksProxyHost", cfg.getString("proxy-host") );
+		System.getProperties().put( "socksProxyPort", cfg.getString("proxy-port") );
+		
 		Bukkit.getPluginCommand("telegram").setExecutor(new TelegramCmd());
 		Bukkit.getPluginCommand("linktelegram").setExecutor(new LinkTelegramCmd());
 		Bukkit.getPluginManager().registerEvents(this, this);
@@ -68,6 +75,8 @@ public class Main extends JavaPlugin implements Listener{
 				}
 			}
 		}, 20L, 20L);
+		
+		
 	}
 	public static void save(){
 		Gson gson = new Gson();

@@ -2,3 +2,7 @@ chat-format: '&c[Telegram]&r %player%: %message%'
 enable-joinquitmessages: true
 enable-deathmessages: true
 enable-chatmessages: true
+# SOCKS Proxy Settings
+proxy-enabled: false
+proxy-host: '127.0.0.1'
+proxy-port: '1234'
